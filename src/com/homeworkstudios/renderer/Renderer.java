@@ -8,7 +8,11 @@ import java.awt.*;
 
 public class Renderer {
 
+    private int frameCount = 0;
+
     public void update(JFrame frame) {
+
+        frameCount++;
 
         Object[] objects = Main.world.getObjects();
 
@@ -39,7 +43,7 @@ public class Renderer {
 
         frame.pack();
 
-        Main.world.update();
+        Main.world.update(frameCount);
 
     }
 

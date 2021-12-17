@@ -24,9 +24,9 @@ public class World {
         return objects;
     }
 
-    public void update() {
+    public void update(int frames) {
         for (Object object : objects) {
-            object.update();
+            object.update(frames);
         }
     }
 

@@ -24,7 +24,7 @@ public abstract class Object {
         return isFilled;
     }
 
-    public abstract void update();
+    public abstract void update(int frames);
 
     public Polygon asPolygon(){
         Polygon poly = new Polygon();
