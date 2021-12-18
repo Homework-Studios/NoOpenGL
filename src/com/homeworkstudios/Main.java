@@ -1,8 +1,12 @@
 package com.homeworkstudios;
 
 import javax.swing.*;
+
+import com.homeworkstudios.control.Keyboard;
 import com.homeworkstudios.renderer.Renderer;
 import com.homeworkstudios.world.World;
+
+import java.awt.event.KeyEvent;
 
 public class Main {
 
@@ -22,6 +26,11 @@ public class Main {
         renderer = new Renderer();
         world = new World();
         while (true) {
+
+            if(Keyboard.isKeyPressed(KeyEvent.VK_ESCAPE)) {
+                System.exit(0);
+            }
+
             renderer.update(frame);
         }
     }
