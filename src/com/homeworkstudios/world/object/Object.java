@@ -58,6 +58,12 @@ public abstract class Object {
         this.rotationZ = rotationZ;
     }
 
+    public void resetRotation(){
+        rotationX = 0;
+        rotationY = 0;
+        rotationZ = 0;
+    }
+
     public Vector2 getScreenPosition() {
         return screenPosition;
     }
