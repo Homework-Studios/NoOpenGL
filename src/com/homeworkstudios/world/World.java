@@ -1,7 +1,7 @@
 package com.homeworkstudios.world;
 
 import com.homeworkstudios.world.object.Object;
-import com.homeworkstudios.world.object.defaults.Triangle;
+import com.homeworkstudios.world.object.defaults.Box;
 
 public class World {
 
@@ -9,7 +9,7 @@ public class World {
 
     public World() {
         objects = new Object[1];
-        objects[0] = new Triangle();
+        objects[0] = new Box();
     }
 
     public void add(Object object) {

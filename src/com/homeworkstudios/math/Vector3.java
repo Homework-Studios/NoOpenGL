@@ -2,14 +2,14 @@ package com.homeworkstudios.math;
 
 public class Vector3 {
 
-    public float x;
-    public float y;
-    public float z;
+    public float x = 0f;
+    public float y = 0f;
+    public float z = 0f;
 
     public Vector3() {
-        x = 0;
-        y = 0;
-        z = 0;
+        x = 0f;
+        y = 0f;
+        z = 0f;
     }
 
     public Vector3(float x, float y, float z) {
@@ -52,6 +52,14 @@ public class Vector3 {
         this.x += x;
         this.y += y;
         this.z += z;
+    }
+
+    public float distanceSquared(Vector3 v) {
+        return (x - v.x) * (x - v.x) + (y - v.y) * (y - v.y) + (z - v.z) * (z - v.z);
+    }
+
+    public float distance(Vector3 v) {
+        return (float) Math.sqrt(distanceSquared(v));
     }
 
 }

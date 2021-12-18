@@ -1,6 +1,7 @@
 package com.homeworkstudios.renderer;
 
 import com.homeworkstudios.Main;
+import com.homeworkstudios.math.Vector2;
 import com.homeworkstudios.world.object.Object;
 
 import javax.swing.*;
@@ -24,10 +25,19 @@ public class Renderer {
                 for (Object object : objects) {
                     Polygon polygon = object.asPolygon();
                     g.setColor(object.getColor());
-                    if(object.isFilled()) {
-                        g.fillPolygon(polygon);
+                    if(object.isPoints()){
+                        Vector2[] points = object.asPoints();
+
+                        for (Vector2 point : points) {
+                            g.drawOval((int) point.x, (int) point.y, 30, 30);
+                        }
+
                     }else{
-                        g.drawPolygon(polygon);
+                        if(object.isFilled()) {
+                            g.fillPolygon(polygon);
+                        }else{
+                            g.drawPolygon(polygon);
+                        }
                     }
                 }
 
