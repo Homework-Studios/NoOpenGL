@@ -16,6 +16,8 @@ public abstract class Object {
 
     public Vector2 screenPosition = new Vector2();
 
+    protected Color color = Color.BLACK;
+
     public Vector3[] getVertices() {
         return vertices;
     }
@@ -24,8 +26,12 @@ public abstract class Object {
         this.vertices = vertices;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public Color getColor() {
-        return Color.BLACK;
+        return color;
     }
 
     public boolean isFilled() {

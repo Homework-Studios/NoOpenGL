@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
 
 public class Box extends Object {
 
+    private float size = 200;
+
     public Box() {
         init(new Vector3[4]);
         this.isFilled = true;
@@ -19,35 +21,39 @@ public class Box extends Object {
             this.mouseWheelRotation = e.getWheelRotation()
         );
 
+        this.setScreenPosition(new Vector2((float)Main.frame.getWidth() / 2, (float)Main.frame.getHeight() / 2));
+
     }
 
     private int mouseWheelRotation = 0;
 
     @Override
     public void update(int frames) {
-        this.vertices[0] = new Vector3(-200, -200, 0);
-        this.vertices[1] = new Vector3(200, -200, 0);
-        this.vertices[2] = new Vector3(200, 200, 0);
-        this.vertices[3] = new Vector3( -200, 200, 0);
+        this.vertices[0] = new Vector3(-size, -size, 0);
+        this.vertices[1] = new Vector3(size, -size, 0);
+        this.vertices[2] = new Vector3(size, size, 0);
+        this.vertices[3] = new Vector3(-size, size, 0);
 
         if(Keyboard.isKeyPressed(KeyEvent.VK_R)) {
             this.resetRotation();
         }
 
-        if(Keyboard.isKeyPressed(KeyEvent.VK_SHIFT)){
-            this.rotationX += this.mouseWheelRotation / 4f;
-        }else{
-            this.rotationZ += this.mouseWheelRotation / 4f;
+        if(Keyboard.isKeyPressed(KeyEvent.VK_Q)) {
+            this.size += 0.7f;
         }
 
-        this.mouseWheelRotation = 0;
-
-        Point mouse = Main.frame.getMousePosition();
-
-        if(mouse != null) {
-            this.setScreenPosition(new Vector2(mouse.getLocation().x, mouse.getLocation().y));
+        if(Keyboard.isKeyPressed(KeyEvent.VK_E)) {
+            this.size -= 0.7f;
         }
 
+        this.rotationZ = frames * 0.001f;
+
+        // set the color to a colorful gradient that changes over time
+        this.color = new Color(
+            (int) (Math.sin(frames / 100f) * 127 + 128),
+            (int) (Math.sin(frames / 100f + 2) * 127 + 128),
+            (int) (Math.sin(frames / 100f + 4) * 127 + 128)
+        );
     }
 
 }

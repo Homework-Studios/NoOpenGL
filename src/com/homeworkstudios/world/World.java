@@ -1,7 +1,10 @@
 package com.homeworkstudios.world;
 
+import com.homeworkstudios.Main;
 import com.homeworkstudios.world.object.Object;
 import com.homeworkstudios.world.object.defaults.Box;
+
+import java.awt.*;
 
 public class World {
 
@@ -11,6 +14,8 @@ public class World {
         objects = new Object[1];
         objects[0] = new Box();
     }
+
+    public Color backgroundColor = Color.BLACK;
 
     public void add(Object object) {
         objects[0] = object;

@@ -2,6 +2,7 @@ package com.homeworkstudios.renderer;
 
 import com.homeworkstudios.Main;
 import com.homeworkstudios.math.Vector2;
+import com.homeworkstudios.world.World;
 import com.homeworkstudios.world.object.Object;
 
 import javax.swing.*;
@@ -37,6 +38,12 @@ public class Renderer {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(1200, 720);
+            }
+
+
+            @Override
+            public Color getBackground() {
+                return Main.world.backgroundColor;
             }
         };
 
