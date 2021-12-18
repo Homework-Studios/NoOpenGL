@@ -16,14 +16,13 @@ public class Box extends Object {
 
     @Override
     public void update(int frames) {
-        JFrame frame = Main.frame;
-        this.vertices[0] = new Vector3((float)frame.getWidth() / 2 - 50, (float)frame.getHeight() / 2 - 50, 40);
-        this.vertices[1] = new Vector3((float)frame.getWidth() / 2 + 50, (float)frame.getHeight() / 2 - 50, 0);
-        this.vertices[2] = new Vector3((float)frame.getWidth() / 2 + 50, (float)frame.getHeight() / 2 + 50, 0);
-        this.vertices[3] = new Vector3((float)frame.getWidth() / 2 - 50, (float)frame.getHeight() / 2 + 50, 0);
+        this.vertices[0] = new Vector3(-50, -50, 0);
+        this.vertices[1] = new Vector3(50, -50, 0);
+        this.vertices[2] = new Vector3(50, 50, 0);
+        this.vertices[3] = new Vector3( -50, 50, 0);
 
-        this.rotationY += 0.001f;
-
+        this.rotationX += 0.01f;
+        this.rotationZ += 0.001f;
     }
 
 }

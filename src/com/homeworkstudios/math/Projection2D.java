@@ -34,25 +34,13 @@ public class Projection2D {
     }
 
     public static Vector2 project(Vector3 vector) {
-        JFrame jFrame = new JFrame();
-        float middleX = (float)jFrame.getWidth() / 2;
-        float middleY = (float)jFrame.getHeight() / 2;
-        vector.add(-middleX, -middleY, 0);
-        Vector2 projected = matrixMultiply(vector);
-        projected.add(middleX, middleY, 0);
-        return projected;
+        return matrixMultiply(vector);
     }
 
     public static Vector2 rotate(Vector2 vector, float angleX, float angleY, float angleZ) {
-        JFrame jFrame = new JFrame();
-        float middleX = (float)jFrame.getWidth() / 2;
-        float middleY = (float)jFrame.getHeight() / 2;
-        vector.add(-middleX, -middleY, 0);
         Vector2 x = matrixMultiply2D(vector, rotationX(angleX));
         Vector2 y = matrixMultiply2D(x, rotationY(angleY));
-        Vector2 z = matrixMultiply2D(y, rotationZ(angleZ));
-        z.add(middleX, middleY, 0);
-        return z;
+        return matrixMultiply2D(y, rotationZ(angleZ));
     }
 
     private static Vector2 matrixMultiply(Vector3 vector) {
