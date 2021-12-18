@@ -8,12 +8,13 @@ import java.awt.*;
 public abstract class Object {
 
     public Vector3[] vertices;
-    protected boolean isPoints = false;
     protected boolean isFilled = true;
 
     public float rotationX = 0;
     public float rotationY = 0;
     public float rotationZ = 0;
+
+    public Vector2 screenPosition = new Vector2();
 
     public Vector3[] getVertices() {
         return vertices;
@@ -29,10 +30,6 @@ public abstract class Object {
 
     public boolean isFilled() {
         return isFilled;
-    }
-
-    public boolean isPoints() {
-        return isPoints;
     }
 
     public abstract void update(int frames);
@@ -61,6 +58,14 @@ public abstract class Object {
         this.rotationZ = rotationZ;
     }
 
+    public Vector2 getScreenPosition() {
+        return screenPosition;
+    }
+
+    public void setScreenPosition(Vector2 screenPosition) {
+        this.screenPosition = screenPosition;
+    }
+
     public Polygon asPolygon(){
         Polygon poly = new Polygon();
         for(Vector3 v : vertices){
@@ -70,22 +75,12 @@ public abstract class Object {
 
                 Vector2 rotated = Projection2D.rotate(projected, rotationX, rotationY, rotationZ);
 
-                poly.addPoint((int) rotated.x, (int) rotated.y);
+                Vector2 screenPosition = this.getScreenPosition();
+
+                poly.addPoint((int) rotated.x + (int) screenPosition.x, (int) rotated.y + (int) screenPosition.y);
             }
         }
         return poly;
-    }
-
-    public Vector2[] asPoints(){
-        Vector2[] points = new Vector2[vertices.length];
-        for(int i = 0; i < vertices.length; i++){
-            if(vertices[i] != null){
-                Vector2 projected = Projection2D.project(vertices[i]);
-                Vector2 rotated = Projection2D.rotate(projected, rotationX, rotationY, rotationZ);
-                points[i] = rotated;
-            }
-        }
-        return points;
     }
 
 }

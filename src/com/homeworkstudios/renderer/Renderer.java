@@ -25,19 +25,10 @@ public class Renderer {
                 for (Object object : objects) {
                     Polygon polygon = object.asPolygon();
                     g.setColor(object.getColor());
-                    if(object.isPoints()){
-                        Vector2[] points = object.asPoints();
-
-                        for (Vector2 point : points) {
-                            g.drawOval((int) point.x, (int) point.y, 30, 30);
-                        }
-
+                    if(object.isFilled()) {
+                        g.fillPolygon(polygon);
                     }else{
-                        if(object.isFilled()) {
-                            g.fillPolygon(polygon);
-                        }else{
-                            g.drawPolygon(polygon);
-                        }
+                        g.drawPolygon(polygon);
                     }
                 }
 
