@@ -15,9 +15,9 @@ public class Box extends Object {
         init(new Vector3[4]);
         this.isFilled = true;
 
-        Main.frame.addMouseWheelListener(e -> {
-            this.mouseWheelRotation = e.getWheelRotation();
-        });
+        Main.frame.addMouseWheelListener(e ->
+            this.mouseWheelRotation = e.getWheelRotation()
+        );
 
     }
 
